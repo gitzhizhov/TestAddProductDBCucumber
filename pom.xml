@@ -31,12 +31,12 @@
             <version>2.2.224</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-<!--        <dependency>-->
-<!--            <groupId>org.seleniumhq.selenium</groupId>-->
-<!--            <artifactId>selenium-java</artifactId>-->
-<!--            <version>4.18.1</version>-->
-<!--        </dependency>-->
+         <!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java-->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.18.1</version>
+        </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
@@ -100,6 +100,7 @@
             <version>1.9.21</version>
             <scope>runtime</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite-api</artifactId>
@@ -136,12 +137,12 @@
             <!--https://mvnrepository.com/artifact/org.aspectj/aspectjweaver-->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-model</artifactId>
-                <version>2.26.0</version>
+                <artifactId>allure-maven</artifactId>
+                <version>2.12.0</version>
                 <configuration>
-                    <reportVersions>2.24.0</reportVersions>
+                    <reportVersion>2.24.0</reportVersion>
                     <resultsDirectory>${project.build.directory}/reports/allure-results</resultsDirectory>
-                    <reportsDirectory>${project.build.directory}/reports/allure-reports</reportsDirectory>
+                    <reportDirectory>${project.build.directory}/reports/allure-reports</reportDirectory>
                 </configuration>
             </plugin>
 
