@@ -12,18 +12,24 @@ import java.sql.SQLException;
 
 public class step {
 
-    private static final String connString = "jdbc:h2:tcp://localhost:9092/mem:testdb";
+    private static final String connStringLocal = "jdbc:h2:tcp://localhost:9092/mem:testdb";
+    private static final String connStringRemove = "http://149.154.71.152:8080/h2-console";
     private static final String login = "user";
     private static final String password = "pass";
 
     private static final ConnectionManager connectionManager = ConnectionManager.getConnectionManager();
-    Connection connection = connectionManager.getConnection(connString, login, password);
+    //Connection connection = connectionManager.getConnection(connStringLocal, login, password);
     protected static RequestsManager rm = RequestsManager.getRequestsManager();
     protected static DisplayResult displayResult = DisplayResult.getDisplayResult();
 
 
-    @И("подключение к БД")
-    public void connectToDB() throws SQLException {
+    @И("подключение к БД, {}")
+    public void connectToDB(String isLocal) throws SQLException {
+        String connString = "";
+        if (isLocal.equals("local")) connString = connStringLocal;
+
+        if (isLocal.equals("remove")) connString = connStringRemove;
+
         connectionManager.getConnection(connString, login, password);
     }
 
@@ -32,9 +38,9 @@ public class step {
         String request = "INSERT INTO food(food_name, food_type, food_exotic) values (?, ?, ?)";
         String nameFood = name;
         String typeFood = type;
-        String ex = exotic;
+        String ex = exotic.toLowerCase();
         boolean isExotic;
-        if (ex.equals("TRUE")) isExotic = true; else isExotic = false;
+        if (ex.equals("true")) isExotic = true; else isExotic = false;
         rm.insertPrepStatement(request, nameFood, typeFood, isExotic);
     }
 
