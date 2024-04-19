@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class step {
 
     private static final String connStringLocal = "jdbc:h2:tcp://localhost:9092/mem:testdb";
-    private static final String connStringRemove = "http://149.154.71.152:8080/h2-console";
+    private static final String connStringRemove = "jdbc:h2:tcp://149.154.71.152:9092/mem:testdb";
     private static final String login = "user";
     private static final String password = "pass";
 
